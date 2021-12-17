@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFF9F9FD</color>
+
+    <color name="heart">#FFEB504E</color>
+    <color name="real_black">#FF000000</color>
+    <color name="main_gray">#FF888888</color>
+    <color name="box_gray">#FF222222</color>
+    <color name="mackduck_yellow">#FFFCD602</color>
+    <color name="chip_gray">#FF575757</color>
+    <color name="bottom_sheet_black">#FF1F1F1F</color>
+    <color name="black">#FF121212</color>
+    <color name="gray_no_result">#FF444444</color>
+
+    <color name="kakao_black">#FF1A1A1A</color>
+    <color name="kakao_yellow">#FEE500</color>
+    <color name="kakao_text">#D9000000</color>
+
+    <color name="what_beer_black">#FF0D0D0D</color>
+    <color name="naeogkku_brown">#FFB78100</color>
+    <color name="what_beer_gray">#FF7B7B7B</color>
+
+    <color name="dialog_gray">#99FFFFFF</color>
+    <color name="blur">#CC121212</color>
+    <color name="light_blur">#99121212</color>
+
+    <color name="report_gray">#FF222323</color>
+</resources>
