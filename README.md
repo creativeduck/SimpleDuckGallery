@@ -22,12 +22,6 @@ dependencies {
     implementation 'com.github.creativeduck:SimpleDuckGallery:1.0.0'   
 }
 ```
-
-You have to migrate your project to support AndroidX by add following lines on gradle.properties file:
-```
-android.useAndroidX=true
-android.enableJetifier=true
-```
 Usage
 --------
 
