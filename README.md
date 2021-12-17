@@ -1,4 +1,4 @@
-ImagePicker
+SimpleDuckGallery
 ========
 
 This is an android library for selecting picture in your phone   
