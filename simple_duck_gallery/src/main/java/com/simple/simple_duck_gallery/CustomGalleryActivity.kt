@@ -31,7 +31,7 @@ class CustomGalleryActivity : BaseActivity<ActivityCustomGalleryBinding>(Activit
     private var multipleImageList = ArrayList<String>()
     private var multiSelectedNum = 1
     private var currentSelectedNum = 0
-    private var alreadyImageIndex = 0
+//    private var alreadyImageIndex = 0
     private var onlyOne = false
     private var bucketHashMap = HashMap<String, Long>()
     private var bucketList = mutableListOf<String>()
@@ -61,8 +61,8 @@ class CustomGalleryActivity : BaseActivity<ActivityCustomGalleryBinding>(Activit
         galleryAdapter = CustomGalleryAdapter(this)
         setRecycler()
 
-        currentSelectedNum = intent.getIntExtra(CURRENT_IMAGE_NUM, 0)
-        alreadyImageIndex = currentSelectedNum
+//        currentSelectedNum = intent.getIntExtra(CURRENT_IMAGE_NUM, 0)
+//        alreadyImageIndex = currentSelectedNum
         binding.customGalleryTitle.setOnClickListener {
             binding.customGallerySpinner.performClick()
         }

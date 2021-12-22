@@ -16,6 +16,10 @@ class SimpleGalleryLauncher(
     private val context: () -> Context,
     private val resultLauncher : ActivityResultLauncher<Intent>
 ) {
+    fun launch() {
+        val intent = Intent(context(), CustomGalleryActivity::class.java)
+        resultLauncher.launch(intent)
+    }
     fun launch(currentImageNum : Int) {
         val intent = Intent(context(), CustomGalleryActivity::class.java)
         intent.putExtra(CustomGalleryActivity.CURRENT_IMAGE_NUM, currentImageNum)

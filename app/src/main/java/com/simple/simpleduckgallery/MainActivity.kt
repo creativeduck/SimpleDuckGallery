@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         binding.btnGetImage.setOnClickListener {
-            photoLauncher.launch(uriListAdapter.currentList.size)
+            photoLauncher.launch()
         }
 
         binding.recyclerView.apply {
