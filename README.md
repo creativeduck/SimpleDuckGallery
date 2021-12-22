@@ -79,7 +79,7 @@ SimpleGalleryUtil.showSnackBar(context = this,
                                 action = null,
                                 clickListener = null)
 ```
-<img src="https://user-images.githubusercontent.com/89892954/147030607-4004a342-e0f9-4402-9bec-f1b6df7b8b5a.jpg" width="400" height="800"/>   
+<img src="https://user-images.githubusercontent.com/89892954/147043239-f535aee0-02b3-4063-afb1-e7798fbc2170.jpg" width="400" height="800"/>   
 
 License
 --------
