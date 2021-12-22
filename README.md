@@ -65,6 +65,21 @@ launch
 ```
 photoLauncher.launch(uriListAdapter.currentList.size)
 ```
+Custom SnackBar
+--------   
+    you can use custom snackBar      
+view : The view to find a parent from   
+message : message that you want to show   
+action : action message that you want to show   
+clickListener : click event when you touch action message   
+```
+SimpleGalleryUtil.showSnackBar(context = this,
+                                view = binding.root,
+                                message = "This is SnackBar",
+                                action = null,
+                                clickListener = null)
+```
+<img src="https://user-images.githubusercontent.com/89892954/147030607-4004a342-e0f9-4402-9bec-f1b6df7b8b5a.jpg" width="400" height="800"/>   
 
 License
 --------
