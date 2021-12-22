@@ -275,36 +275,44 @@ class CustomGalleryActivity : BaseActivity<ActivityCustomGalleryBinding>(Activit
         gallerySpinnerList = bucketList.toList()
         gallerySpinnerAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, gallerySpinnerList)
         gallerySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
-        binding.customGallerySpinner.adapter = gallerySpinnerAdapter
-        binding.customGallerySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val title = gallerySpinnerList[position]
-                selectedIndex = position
-                binding.customGalleryTitle.text = title
-                if (title == getString(R.string.all_picture)) {
-                    galleryAdapter.imageList = totalImageList
-                    imageList = totalImageList
-                }
-                else {
-                    val id = bucketHashMap[title]
-                    val tmpList = ArrayList<GalleryItem>()
-                    for (i in 0 until totalImageList.size) {
-                        val item = totalImageList[i]
-                        if (item.bucketId == id) {
-                            tmpList.add(item)
+        Handler(Looper.getMainLooper()).post {
+            binding.customGallerySpinner.adapter = gallerySpinnerAdapter
+            binding.customGallerySpinner.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        val title = gallerySpinnerList[position]
+                        selectedIndex = position
+                        binding.customGalleryTitle.text = title
+                        if (title == getString(R.string.all_picture)) {
+                            galleryAdapter.imageList = totalImageList
+                            imageList = totalImageList
+                        } else {
+                            val id = bucketHashMap[title]
+                            val tmpList = ArrayList<GalleryItem>()
+                            for (i in 0 until totalImageList.size) {
+                                val item = totalImageList[i]
+                                if (item.bucketId == id) {
+                                    tmpList.add(item)
+                                }
+                            }
+                            galleryAdapter.imageList = tmpList
+                            imageList = tmpList
                         }
+                        galleryAdapter.notifyDataSetChanged()
                     }
-                    galleryAdapter.imageList = tmpList
-                    imageList = tmpList
+
+                    override fun onNothingSelected(p0: AdapterView<*>?) {
+                    }
                 }
-                galleryAdapter.notifyDataSetChanged()
+            totalImageList.addAll(listOfAllImages)
+            if (changed) {
+                binding.customGallerySpinner.setSelection(index)
             }
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-            }
-        }
-        totalImageList.addAll(listOfAllImages)
-        if (changed) {
-            binding.customGallerySpinner.setSelection(index)
         }
         return listOfAllImages
     }
