@@ -1,6 +1,6 @@
 SimpleDuckGallery
 ========
-
+[![](https://jitpack.io/v/creativeduck/SimpleDuckGallery.svg)](https://jitpack.io/#creativeduck/SimpleDuckGallery)  
 This is an android library for selecting picture in your phone   
 <img src="https://user-images.githubusercontent.com/89892954/147030607-4004a342-e0f9-4402-9bec-f1b6df7b8b5a.jpg" width="400" height="800"/>   
 <img src="https://user-images.githubusercontent.com/89892954/147030830-cba9288c-edc1-4739-99d5-63db5ec75307.jpg" width="400" height="800"/>   
