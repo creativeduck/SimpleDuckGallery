@@ -61,10 +61,24 @@ private val photoLauncher = registerSimpleGallery { images ->
 }
 ```
 launch   
-이때 uriListAdapter의 currentList의 size를 파라미터로 전달하는 이유는, 추후 가져올 수 있는 사진 개수를 커스텀할 수 있는 기능을 위해서 미리 넣어놓은 것입니다.   
 ```
-photoLauncher.launch(uriListAdapter.currentList.size)
+photoLauncher.launch()
 ```
+Custom SnackBar
+--------   
+    you can use custom snackBar      
+view : The view to find a parent from   
+message : message that you want to show   
+action : action message that you want to show   
+clickListener : click event when you touch action message   
+```
+SimpleGalleryUtil.showSnackBar(context = this,
+                                view = binding.root,
+                                message = "This is SnackBar",
+                                action = null,
+                                clickListener = null)
+```
+<img src="https://user-images.githubusercontent.com/89892954/147043239-f535aee0-02b3-4063-afb1-e7798fbc2170.jpg" width="400" height="800"/>   
 
 License
 --------
