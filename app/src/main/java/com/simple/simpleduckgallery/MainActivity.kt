@@ -51,7 +51,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnShowSnack.setOnClickListener {
-            SimpleGalleryUtil.showSnackBar(this, binding.root, "This is SnackBar", null, null)
+            SimpleGalleryUtil.showSnackBar(context = this,
+                                            view = binding.root,
+                                            message = "This is SnackBar",
+                                            action = null,
+                                            clickListener = null)
+
         }
     }
 }
