@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SimpleDuckGallery</string>
+    <string name="complete">complete</string>
+    <string name="next">next</string>
+    <string name="send">send</string>
+    <string name="not_connected">No Network Connection</string>
+    <string name="remove_all">Delete All</string>
+    <string name="photo">Picture</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="revise">Revise</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="okay">Okay</string>
+    <string name="edit">Edit</string>
+    <string name="see_more">See More</string>
+    <string name="all_picture">All Picture</string>
+    <string name="can_use">You must set permissions to use the function</string>
+    <string name="agreed">Get Permission</string>
+    <string name="need_permission">Storage permission is required to import photos.</string>
+    <string name="need_permission_go_to_setting">Storage permission is required to import photos. Click \\\'Okay\\\' to go to the settings window.</string>
+</resources>

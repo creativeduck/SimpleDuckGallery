@@ -40,6 +40,8 @@ class CustomGalleryActivity : BaseActivity<ActivityCustomGalleryBinding>(Activit
     private var contentObserver: ContentObserver? = null
     private var isFirst = true
 
+    private var maxImageCount = 105
+
     // 갤러리 권한
     private val requestStoragePermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
@@ -48,7 +50,7 @@ class CustomGalleryActivity : BaseActivity<ActivityCustomGalleryBinding>(Activit
                 loadMultipleImage()
             }
             else {
-                showSnackBar(binding.root, "권한을 설정해야 기능을 사용할 수 있습니다.", null, null)
+                showSnackBar(binding.root, getString(R.string.need_permission), null, null)
             }
         }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -105,7 +107,7 @@ class CustomGalleryActivity : BaseActivity<ActivityCustomGalleryBinding>(Activit
             // 권한을 거부했고 설명이 필요하다면
             if (shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)) {
                 val clickListener = View.OnClickListener { requestStoragePermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE) }
-                showSnackBar(binding.root, "사진을 가져오기 위해서는 저장소 권한이 필요합니다.", "권한 승인", clickListener)
+                showSnackBar(binding.root, getString(R.string.need_permission), getString(R.string.agreed), clickListener)
             }
             // 사용자가 승인 거절과 동시에 다시 표시하지 않기 옵션을 선택한 경우
             else {
@@ -116,7 +118,7 @@ class CustomGalleryActivity : BaseActivity<ActivityCustomGalleryBinding>(Activit
                     intent.data = uri
                     startActivity(intent)
                 }
-                showSnackBar(binding.root, "사진을 가져오기 위해서는 저장소 권한이 필요합니다. 확인을 누르시면 설정창으로 이동합니다.", "확인", clickListener)
+                showSnackBar(binding.root, getString(R.string.need_permission_go_to_setting), getString(R.string.okay), clickListener)
                 // 아직 승인 요청을 한 적이 없는 경우
             }
 
@@ -175,7 +177,7 @@ class CustomGalleryActivity : BaseActivity<ActivityCustomGalleryBinding>(Activit
                     }
                     galleryAdapter.notifyDataSetChanged()
                 } else {
-                    if (multiSelectedNum == 6 || (multiSelectedNum + currentSelectedNum) >= 6) {
+                    if (multiSelectedNum == maxImageCount+1|| (multiSelectedNum + currentSelectedNum) >= maxImageCount+1) {
                         showLimitFive()
                     } else {
                         selectBorder.visibility = View.VISIBLE
@@ -216,13 +218,13 @@ class CustomGalleryActivity : BaseActivity<ActivityCustomGalleryBinding>(Activit
             if (onlyOne) {
                 val image = imageList[selectedIndex].url
                 val intent = Intent()
-                intent.putExtra("image", image)
+                intent.putExtra(JUST_IMAGE, image)
                 setResult(RESULT_CUSTOM_GALLERY, intent)
                 finish()
             }
             else {
                 val intent = Intent()
-                intent.putExtra("imageList", multipleImageList)
+                intent.putExtra(IMAGE_LIST, multipleImageList)
                 setResult(RESULT_CUSTOM_GALLERY, intent)
                 finish()
             }
@@ -241,7 +243,7 @@ class CustomGalleryActivity : BaseActivity<ActivityCustomGalleryBinding>(Activit
         var orderBy = MediaStore.Video.Media.DATE_ADDED
         var cursor = contentResolver.query(
             uri, projection, null,
-            null, orderBy + " DESC"
+            null, "$orderBy DESC"
         )
         var columnIndexData = cursor?.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA)
         var buckets = HashSet<String>()
@@ -268,7 +270,7 @@ class CustomGalleryActivity : BaseActivity<ActivityCustomGalleryBinding>(Activit
         }
         bucketList = buckets.toMutableList()
         bucketList.sort()
-        bucketList.add(0, "모든 사진")
+        bucketList.add(0, getString(R.string.all_picture))
 
         gallerySpinnerList = bucketList.toList()
         gallerySpinnerAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, gallerySpinnerList)
@@ -279,7 +281,7 @@ class CustomGalleryActivity : BaseActivity<ActivityCustomGalleryBinding>(Activit
                 val title = gallerySpinnerList[position]
                 selectedIndex = position
                 binding.customGalleryTitle.text = title
-                if (title == "모든 사진") {
+                if (title == getString(R.string.all_picture)) {
                     galleryAdapter.imageList = totalImageList
                     imageList = totalImageList
                 }
@@ -309,9 +311,9 @@ class CustomGalleryActivity : BaseActivity<ActivityCustomGalleryBinding>(Activit
 
     companion object {
         const val RESULT_CUSTOM_GALLERY = 1113
-        const val REQUEST_TAKE_PICTURE = 1114
-        const val REQUEST_PHOTO_EDIT = 1116
-        const val RESULT_PHOTO_EDIT = 1117
-        val CURRENT_IMAGE_NUM = "current_image_num"
+        val CURRENT_IMAGE_NUM = "currentImageNum"
+        val JUST_IMAGE = "justImage"
+        val IMAGE_LIST = "imageList"
+
     }
 }

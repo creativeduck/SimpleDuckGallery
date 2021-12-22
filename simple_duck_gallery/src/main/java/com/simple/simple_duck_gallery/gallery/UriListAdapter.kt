@@ -8,7 +8,10 @@ import com.bumptech.glide.Glide
 import com.simple.simple_duck_gallery.OnItemClickListener
 import com.simple.simple_duck_gallery.databinding.ItemMultiImageBinding
 
-class UriListAdapter : ListAdapter<UriItem, UriListAdapter.Holder>(UriCallback()){
+class UriListAdapter(
+    private val itemDelete : (UriItem) -> Unit,
+    private val itemClick : (UriItem) -> Unit
+) : ListAdapter<UriItem, UriListAdapter.Holder>(UriCallback()){
     var deleteListener: OnItemClickListener? = null
     var listener: OnItemClickListener? = null
 
@@ -23,13 +26,12 @@ class UriListAdapter : ListAdapter<UriItem, UriListAdapter.Holder>(UriCallback()
     // 아이템 뷰를 저장하는 뷰홀더 클래스.
     inner class Holder(val binding: ItemMultiImageBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
-            if (deleteListener != null) {
-                binding.itemMultiImageDelete.setOnClickListener {
-                    deleteListener!!.onItemClicked(binding.root, adapterPosition)
-                }
+            binding.itemMultiImageDelete.setOnClickListener {
+                itemDelete(getItem(adapterPosition))
             }
+
             binding.root.setOnClickListener {
-                listener?.onItemClicked(binding.root, adapterPosition)
+                itemClick(getItem(adapterPosition))
             }
         }
 
