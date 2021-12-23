@@ -4,7 +4,7 @@ SimpleDuckGallery
 This is an android library for selecting picture in your phone   
 <img src="https://user-images.githubusercontent.com/89892954/147030607-4004a342-e0f9-4402-9bec-f1b6df7b8b5a.jpg" width="400" height="800"/>   
 <img src="https://user-images.githubusercontent.com/89892954/147030830-cba9288c-edc1-4739-99d5-63db5ec75307.jpg" width="400" height="800"/>   
-<img src="https://user-images.githubusercontent.com/89892954/147030855-fcd00a75-3293-457b-b0e1-24ad85482b44.jpg" width="400" height="800"/>     
+<img src="https://user-images.githubusercontent.com/89892954/147169007-854ad00b-2a05-4602-ba14-a4b10a77d1bc.jpg" width="400" height="800"/>     
         
 Installation
 --------
