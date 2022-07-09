@@ -42,12 +42,7 @@ abstract class BaseActivity<B : ViewBinding>(private val inflate: (LayoutInflate
         actionBar.setDisplayShowTitleEnabled(false)
         actionBar.setHomeAsUpIndicator(resId)
     }
-    fun dpTopx(dp: Int) : Int {
-        val outMetrics = DisplayMetrics()
-        windowManager.defaultDisplay.getMetrics(outMetrics)
-        var px = dp * outMetrics.density
-        return px.toInt()
-    }
+
     open fun showSnackBar(view: View, message: String, action: String?, clickListener : View.OnClickListener?) {
         val snackbar = Snackbar.make(view, message, Snackbar.LENGTH_LONG)
             .setTextColor(
