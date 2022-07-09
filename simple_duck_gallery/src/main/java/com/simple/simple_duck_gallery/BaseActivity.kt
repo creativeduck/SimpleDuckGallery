@@ -26,11 +26,6 @@ abstract class BaseActivity<B : ViewBinding>(private val inflate: (LayoutInflate
         binding = inflate(layoutInflater)
         setContentView(binding.root)
     }
-    // 토스트를 쉽게 띄울 수 있게 해줌.
-    fun showCustomToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> finish()
